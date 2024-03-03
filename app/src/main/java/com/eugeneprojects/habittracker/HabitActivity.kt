@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import com.eugeneprojects.habittracker.databinding.ActivityHabitBinding
-import com.eugeneprojects.habittracker.databinding.ActivityHabitListBinding
 
 class HabitActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHabitBinding
