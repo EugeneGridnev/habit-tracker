@@ -10,32 +10,32 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/habitName"
+            android:id="@+id/tvHabitName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Отжумания"
             app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintBottom_toTopOf="@+id/habitPriority"
+            app:layout_constraintBottom_toTopOf="@+id/tvHabitPriority"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Отжумания" />
 
         <TextView
-            android:id="@+id/habitPriority"
+            android:id="@+id/tvHabitPriority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Присядания"
-            app:layout_constraintTop_toBottomOf="@+id/habitName"
-            app:layout_constraintBottom_toTopOf="@+id/habitType"
+            app:layout_constraintTop_toBottomOf="@+id/tvHabitName"
+            app:layout_constraintBottom_toTopOf="@+id/tvHabitType"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Присядания" />
 
         <TextView
-            android:id="@+id/habitType"
+            android:id="@+id/tvHabitType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Спина качат"
-            app:layout_constraintTop_toBottomOf="@+id/habitPriority"
+            app:layout_constraintTop_toBottomOf="@+id/tvHabitPriority"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Спина качат" />

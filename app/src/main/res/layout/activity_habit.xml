@@ -8,7 +8,7 @@
 
     <TextView
         style="@style/habitTextViewStyle"
-        android:id="@+id/habitName"
+        android:id="@+id/tvHabitName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/habit_name"
@@ -18,71 +18,71 @@
 
     <EditText
         style="@style/habitEditTextStyle"
-        android:id="@+id/habitNameEdit"
+        android:id="@+id/edHabitName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/habit_name_edit_hint"
-        app:layout_constraintTop_toBottomOf="@id/habitName"
+        app:layout_constraintTop_toBottomOf="@id/tvHabitName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         style="@style/habitTextViewStyle"
-        android:id="@+id/habitDescription"
+        android:id="@+id/tvHabitDescription"
         android:text="@string/habit_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/habitNameEdit"
+        app:layout_constraintTop_toBottomOf="@id/edHabitName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         style="@style/habitEditTextStyle"
-        android:id="@+id/habitDescriptionEdit"
+        android:id="@+id/edHabitDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/habit_description_edit_hint"
-        app:layout_constraintTop_toBottomOf="@id/habitDescription"
+        app:layout_constraintTop_toBottomOf="@id/tvHabitDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         style="@style/habitTextViewStyle"
-        android:id="@+id/habitPriority"
+        android:id="@+id/tvHabitPriority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/habit_priority"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintEnd_toStartOf="@+id/habitPrioritySpinner"
+        app:layout_constraintEnd_toStartOf="@+id/spinHabitPriority"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/habitDescriptionEdit" />
+        app:layout_constraintTop_toBottomOf="@id/edHabitDescription" />
 
     <Spinner
-        android:id="@+id/habitPrioritySpinner"
+        android:id="@+id/spinHabitPriority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/habitPriority"
-        app:layout_constraintStart_toEndOf="@id/habitPriority"
+        app:layout_constraintBottom_toBottomOf="@id/tvHabitPriority"
+        app:layout_constraintStart_toEndOf="@id/tvHabitPriority"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/habitPriority" />
+        app:layout_constraintTop_toTopOf="@id/tvHabitPriority" />
 
     <TextView
         style="@style/habitTextViewStyle"
-        android:id="@+id/habitType"
+        android:id="@+id/tvHabitType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/habit_type"
-        app:layout_constraintTop_toBottomOf="@+id/habitPrioritySpinner"
+        app:layout_constraintTop_toBottomOf="@+id/spinHabitPriority"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
-        android:id="@+id/habitTypeRadioGroup"
+        android:id="@+id/rgHabitType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="3dp"
-        app:layout_constraintTop_toBottomOf="@+id/habitType"
+        app:layout_constraintTop_toBottomOf="@+id/tvHabitType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -103,41 +103,41 @@
 
     <TextView
         style="@style/habitTextViewStyle"
-        android:id="@+id/habitCount"
+        android:id="@+id/tvHabitCount"
         android:text="@string/habit_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/habitTypeRadioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/rgHabitType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
         style="@style/habitEditTextStyle"
-        android:id="@+id/habitCountEdit"
+        android:id="@+id/edHabitCount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/habit_count_edit_hint"
-        app:layout_constraintTop_toBottomOf="@+id/habitCount"
+        app:layout_constraintTop_toBottomOf="@+id/tvHabitCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         style="@style/habitTextViewStyle"
-        android:id="@+id/habitRhythm"
+        android:id="@+id/tvHabitRhythm"
         android:text="@string/habit_rhythm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/habitCountEdit"
+        app:layout_constraintTop_toBottomOf="@+id/edHabitCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
         style="@style/habitEditTextStyle"
-        android:id="@+id/habitRhythmEdit"
+        android:id="@+id/edHabitRhythm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/habit_rhythm_edit_hint"
-        app:layout_constraintTop_toBottomOf="@+id/habitRhythm"
+        app:layout_constraintTop_toBottomOf="@+id/tvHabitRhythm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
