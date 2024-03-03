@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HabitActivity">
+
+    <TextView
+        android:id="@+id/habitName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/habit_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/habitNameEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/habit_name_edit_hint"
+        app:layout_constraintTop_toBottomOf="@id/habitName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/habitDescription"
+        android:text="@string/habit_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/habitNameEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/habitDescriptionEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/habit_description_edit_hint"
+        app:layout_constraintTop_toBottomOf="@id/habitDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/habitPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/habit_priority"
+        app:layout_constraintEnd_toStartOf="@+id/habitPrioritySpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/habitDescriptionEdit" />
+
+    <Spinner
+        android:id="@+id/habitPrioritySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/habitPriority"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/habitDescriptionEdit" />
+
+    <TextView
+        android:id="@+id/habitType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/habit_type"
+        app:layout_constraintTop_toBottomOf="@+id/habitPrioritySpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/habitTypeRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/habitType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/radioGood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_good" />
+
+        <RadioButton
+            android:id="@+id/radioBad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_bad" />
+    </RadioGroup>
+    <TextView
+        android:id="@+id/habitCount"
+        android:text="@string/habit_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/habitTypeRadioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <EditText
+        android:id="@+id/habitCountEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/habit_count_edit_hint"
+        app:layout_constraintTop_toBottomOf="@+id/habitCount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:id="@+id/habitRhythm"
+        android:text="@string/habit_rhythm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/habitCountEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <EditText
+        android:id="@+id/habitRhythmEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/habit_rhythm_edit_hint"
+        app:layout_constraintTop_toBottomOf="@+id/habitRhythm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
