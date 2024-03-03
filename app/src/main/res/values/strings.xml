@@ -12,6 +12,7 @@
     <string name="habit_type">Тип привычки</string>
     <string name="habit_count_edit_hint">Задайте количество повторений...</string>
     <string name="habit_rhythm_edit_hint">Задайте частоту повторений...</string>
+    <string name="add_habit_fab">Добавить привычку</string>
     <string-array name="planets_array">
         <item>Важно</item>
         <item>Нейтрально</item>
