@@ -13,6 +13,7 @@
     <string name="habit_count_edit_hint">Задайте количество повторений…</string>
     <string name="habit_rhythm_edit_hint">Задайте частоту повторений…</string>
     <string name="add_habit_fab">Добавить привычку</string>
+    <string name="save_habit">Сохранить привычку</string>
     <string-array name="habit_priority_array">
         <item>Нейтрально</item>
         <item>Важно</item>
