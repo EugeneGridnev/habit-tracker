@@ -5,10 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eugeneprojects.habittracker.databinding.ItemHabitLayoutBinding
+import com.eugeneprojects.habittracker.models.Habit
 
 class HabitsAdapter : RecyclerView.Adapter<HabitsAdapter.HabitsViewHolder>(){
 
-    class HabitsViewHolder(private val binding: ItemHabitLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    var habits: List<Habit> = emptyList()
+        set(newValue) {
+            field = newValue
+            notifyDataSetChanged()
+        }
+
+    class HabitsViewHolder(val binding: ItemHabitLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
 
@@ -16,11 +23,14 @@ class HabitsAdapter : RecyclerView.Adapter<HabitsAdapter.HabitsViewHolder>(){
         return HabitsViewHolder(ItemHabitLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun getItemCount(): Int {
-        return 3
-    }
+    override fun getItemCount(): Int = habits.size
 
     override fun onBindViewHolder(holder: HabitsViewHolder, position: Int) {
-
+        val habit = habits[position]
+        with(holder.binding) {
+            tvHabitName.text = habit.habitName
+            tvHabitPriority.text= habit.habitPriority.toString()
+            tvHabitType.text= habit.habitType.toString()
+        }
     }
 }

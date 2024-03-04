@@ -1,5 +1,10 @@
 package com.eugeneprojects.habittracker.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+
+@Parcelize
 data class Habit(
     val id: Int,
     val habitName: String?,
@@ -8,4 +13,6 @@ data class Habit(
     val habitType: String?,
     val habitCount: String?,
     val habitRhythm: String?,
-)
+) : Parcelable {
+
+}

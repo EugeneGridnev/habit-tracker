@@ -1,10 +1,10 @@
 package com.eugeneprojects.habittracker.models
 
-typealias HabitsLustener = (habits: List<Habit>) -> Unit
+typealias HabitsListener = (habits: List<Habit>) -> Unit
 class HabitsService {
-    var habits = mutableListOf<Habit>()
+    private var habits = mutableListOf<Habit>()
 
-    private val listeners = mutableSetOf<HabitsLustener>()
+    private val listeners = mutableSetOf<HabitsListener>()
 
     fun getHabits(): List<Habit> {
         return habits
@@ -23,8 +23,13 @@ class HabitsService {
 
     }
 
-    fun addListener(listener: HabitsLustener) {
+    fun addListener(listener: HabitsListener) {
         listeners.add(listener)
+        listener.invoke(habits)
+    }
+
+    fun removeListener(listener: HabitsListener) {
+        listeners.remove(listener)
         listener.invoke(habits)
     }
 
