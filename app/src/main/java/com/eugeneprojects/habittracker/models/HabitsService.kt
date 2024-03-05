@@ -23,6 +23,22 @@ class HabitsService {
 
     }
 
+    fun updateHabit(id: Int,
+                    habitName: String?,
+                    habitDescription: String?,
+                    habitPriority: String?,
+                    habitType: String?,
+                    habitCount: String?,
+                    habitRhythm: String?) {
+        habits[id].habitName = habitName
+        habits[id].habitDescription = habitDescription
+        habits[id].habitPriority = habitPriority
+        habits[id].habitType = habitType
+        habits[id].habitCount = habitCount
+        habits[id].habitRhythm = habitRhythm
+        notifyChanges()
+    }
+
     fun addListener(listener: HabitsListener) {
         listeners.add(listener)
         listener.invoke(habits)

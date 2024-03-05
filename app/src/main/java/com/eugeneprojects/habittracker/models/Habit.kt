@@ -7,12 +7,25 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Habit(
     val id: Int,
-    val habitName: String?,
-    val habitDescription: String?,
-    val habitPriority: String?,
-    val habitType: String?,
-    val habitCount: String?,
-    val habitRhythm: String?,
+    var habitName: String?,
+    var habitDescription: String?,
+    var habitPriority: String?,
+    var habitType: String?,
+    var habitCount: String?,
+    var habitRhythm: String?,
 ) : Parcelable {
 
+    companion object {
+        @JvmStatic val DEFAULT: Habit
+            get() = Habit(
+                id = this.DEFAULT_ID,
+                habitName = "",
+                habitDescription = "",
+                habitPriority = "Нейтрально",
+                habitType = "Нейтральная",
+                habitCount = "",
+                habitRhythm = ""
+            )
+        const val DEFAULT_ID: Int = -1
+    }
 }

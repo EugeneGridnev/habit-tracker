@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.eugeneprojects.habittracker.adapters.HabitActionListener
 import com.eugeneprojects.habittracker.adapters.HabitsAdapter
 import com.eugeneprojects.habittracker.databinding.ActivityHabitListBinding
+import com.eugeneprojects.habittracker.models.Habit
 import com.eugeneprojects.habittracker.models.HabitsListener
 import com.eugeneprojects.habittracker.models.HabitsService
 
@@ -32,7 +34,14 @@ class HabitListActivity : AppCompatActivity() {
     }
 
     private fun setUpRecyclerView() {
-        habitsAdapter = HabitsAdapter()
+        habitsAdapter = HabitsAdapter(object : HabitActionListener {
+            override fun onHabitClick(habit: Habit) {
+                val intent = Intent(this@HabitListActivity, HabitActivity::class.java)
+                intent.putExtra(HABIT_KEY, habit)
+                startActivity(intent)
+            }
+
+        })
         binding.rvHabitsList.apply {
             adapter = habitsAdapter
             layoutManager = LinearLayoutManager(this@HabitListActivity)
@@ -47,6 +56,10 @@ class HabitListActivity : AppCompatActivity() {
 
     private val habitsListener: HabitsListener = {
         habitsAdapter.habits = it
+    }
+
+    companion object {
+        @JvmStatic val HABIT_KEY = "HABIT"
     }
 
 }

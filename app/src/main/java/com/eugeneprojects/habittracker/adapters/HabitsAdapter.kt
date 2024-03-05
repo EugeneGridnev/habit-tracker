@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eugeneprojects.habittracker.databinding.ItemHabitLayoutBinding
 import com.eugeneprojects.habittracker.models.Habit
 
-class HabitsAdapter : RecyclerView.Adapter<HabitsAdapter.HabitsViewHolder>(){
+class HabitsAdapter(private val actionListener: HabitActionListener) : RecyclerView.Adapter<HabitsAdapter.HabitsViewHolder>(), View.OnClickListener
+{
 
     var habits: List<Habit> = emptyList()
         set(newValue) {
@@ -20,7 +21,12 @@ class HabitsAdapter : RecyclerView.Adapter<HabitsAdapter.HabitsViewHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitsViewHolder {
-        return HabitsViewHolder(ItemHabitLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        val inflater = LayoutInflater.from((parent.context))
+        val binding = ItemHabitLayoutBinding.inflate(inflater, parent, false)
+
+        binding.root.setOnClickListener(this)
+
+        return HabitsViewHolder(binding)
     }
 
     override fun getItemCount(): Int = habits.size
@@ -28,9 +34,15 @@ class HabitsAdapter : RecyclerView.Adapter<HabitsAdapter.HabitsViewHolder>(){
     override fun onBindViewHolder(holder: HabitsViewHolder, position: Int) {
         val habit = habits[position]
         with(holder.binding) {
+            holder.itemView.tag = habit
             tvHabitName.text = habit.habitName
             tvHabitPriority.text= habit.habitPriority.toString()
             tvHabitType.text= habit.habitType.toString()
         }
+    }
+
+    override fun onClick(v: View) {
+        val habit = v.tag as Habit
+        actionListener.onHabitClick(habit)
     }
 }
