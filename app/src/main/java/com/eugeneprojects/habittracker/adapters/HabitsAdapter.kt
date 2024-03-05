@@ -36,8 +36,11 @@ class HabitsAdapter(private val actionListener: HabitActionListener) : RecyclerV
         with(holder.binding) {
             holder.itemView.tag = habit
             tvHabitName.text = habit.habitName
-            tvHabitPriority.text= habit.habitPriority.toString()
-            tvHabitType.text= habit.habitType.toString()
+            tvHabitDescription.text = habit.habitDescription
+            tvHabitPriority.text = habit.habitPriority.string
+            tvHabitType.text = habit.habitType.string
+            tvHabitCount.text = habit.habitCount
+            tvHabitRhythm.text = habit.habitRhythm
         }
     }
 

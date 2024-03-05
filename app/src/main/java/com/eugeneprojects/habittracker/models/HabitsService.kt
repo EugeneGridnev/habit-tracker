@@ -13,8 +13,8 @@ class HabitsService {
     fun addHabit(id: Int,
                  habitName: String?,
                  habitDescription: String?,
-                 habitPriority: String?,
-                 habitType: String?,
+                 habitPriority: HabitPriority,
+                 habitType: HabitType,
                  habitCount: String?,
                  habitRhythm: String?) {
 
@@ -26,8 +26,8 @@ class HabitsService {
     fun updateHabit(id: Int,
                     habitName: String?,
                     habitDescription: String?,
-                    habitPriority: String?,
-                    habitType: String?,
+                    habitPriority: HabitPriority,
+                    habitType: HabitType,
                     habitCount: String?,
                     habitRhythm: String?) {
         habits[id].habitName = habitName

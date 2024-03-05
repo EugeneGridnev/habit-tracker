@@ -10,12 +10,15 @@ import android.widget.RadioButton
 import com.eugeneprojects.habittracker.HabitListActivity.Companion.HABIT_KEY
 import com.eugeneprojects.habittracker.databinding.ActivityHabitBinding
 import com.eugeneprojects.habittracker.models.Habit
+import com.eugeneprojects.habittracker.models.HabitPriority
+import com.eugeneprojects.habittracker.models.HabitType
 import com.eugeneprojects.habittracker.models.HabitsService
+import java.lang.Exception
 
 class HabitActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHabitBinding
-
     private lateinit var habit: Habit
+    private lateinit var spinnerArrayAdapter: ArrayAdapter<HabitPriority>
 
     private val habitsService: HabitsService
         get() = (applicationContext as App).habitsService
@@ -29,12 +32,8 @@ class HabitActivity : AppCompatActivity() {
     }
 
     private fun setUpHabitPriority() {
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.habit_priority_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerArrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, HabitPriority.entries).also {
+            adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinHabitPriority.adapter = adapter
         }
 
@@ -62,6 +61,12 @@ class HabitActivity : AppCompatActivity() {
     private fun setUpUIParams() {
         binding.edHabitName.setText(habit.habitName)
         binding.edHabitDescription.setText(habit.habitDescription)
+        when (habit.habitType) {
+            HabitType.NEUTRAL -> binding.radioNeutral.isChecked = true
+            HabitType.GOOD -> binding.radioGood.isChecked = true
+            HabitType.BAD -> binding.radioBad.isChecked = true
+        }
+        binding.spinHabitPriority.setSelection(spinnerArrayAdapter.getPosition(habit.habitPriority))
         binding.edHabitCount.setText(habit.habitCount)
         binding.edHabitRhythm.setText(habit.habitRhythm)
     }
@@ -94,8 +99,13 @@ class HabitActivity : AppCompatActivity() {
             id,
             binding.edHabitName.text.toString(),
             binding.edHabitDescription.text.toString(),
-            binding.spinHabitPriority.selectedItem.toString(),
-            binding.rgHabitType.findViewById<RadioButton>(binding.rgHabitType.checkedRadioButtonId).text.toString(),
+            spinnerArrayAdapter.getItem(binding.spinHabitPriority.selectedItemId.toInt())!!,
+            when (binding.rgHabitType.findViewById<RadioButton>(binding.rgHabitType.checkedRadioButtonId)) {
+                binding.radioNeutral -> HabitType.NEUTRAL
+                binding.radioGood -> HabitType.GOOD
+                binding.radioBad -> HabitType.BAD
+                else -> throw Exception()
+            },
             binding.edHabitCount.text.toString(),
             binding.edHabitRhythm.text.toString()
             )
@@ -107,8 +117,13 @@ class HabitActivity : AppCompatActivity() {
             id,
             binding.edHabitName.text.toString(),
             binding.edHabitDescription.text.toString(),
-            binding.spinHabitPriority.selectedItem.toString(),
-            binding.rgHabitType.findViewById<RadioButton>(binding.rgHabitType.checkedRadioButtonId).text.toString(),
+            spinnerArrayAdapter.getItem(binding.spinHabitPriority.selectedItemId.toInt())!!,
+            when (binding.rgHabitType.findViewById<RadioButton>(binding.rgHabitType.checkedRadioButtonId)) {
+                binding.radioNeutral -> HabitType.NEUTRAL
+                binding.radioGood -> HabitType.GOOD
+                binding.radioBad -> HabitType.BAD
+                else -> throw Exception()
+            },
             binding.edHabitCount.text.toString(),
             binding.edHabitRhythm.text.toString()
         )
