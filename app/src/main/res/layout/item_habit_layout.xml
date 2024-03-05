@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?attr/materialCardViewElevatedStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,39 +8,113 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/tvHabitName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Отжумания"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintBottom_toTopOf="@+id/tvHabitPriority"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintBottom_toTopOf="@+id/tvHabitDescription"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
             tools:text="Отжумания" />
 
         <TextView
+            style="@style/habitItemTextViewStyle"
+            android:id="@+id/tvHabitDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:maxLines="3"
+            android:ellipsize="end"
+            app:layout_constraintBottom_toTopOf="@+id/tvHabitPriority"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHabitName"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor nec feugiat nisl pretium." />
+
+        <TextView
+            style="@style/habitItemTextViewStyle"
+            android:id="@+id/tvHabitPriorityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/habit_priority"
+            android:textAppearance="?attr/textAppearanceTitleSmall"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@+id/tvHabitDescription"
+            app:layout_constraintBottom_toTopOf="@+id/tvHabitType"
+            app:layout_constraintEnd_toStartOf="@id/tvHabitPriority"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            style="@style/habitItemTextViewStyle"
             android:id="@+id/tvHabitPriority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Присядания"
-            app:layout_constraintTop_toBottomOf="@+id/tvHabitName"
-            app:layout_constraintBottom_toTopOf="@+id/tvHabitType"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Присядания" />
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHabitPriorityTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvHabitPriorityTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvHabitPriorityTitle"
+            tools:text="Нейтрально" />
 
         <TextView
+            style="@style/habitItemTextViewStyle"
+            android:id="@+id/tvHabitTypeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/habit_type"
+            android:textAppearance="?attr/textAppearanceTitleSmall"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@+id/tvHabitPriorityTitle"
+            app:layout_constraintBottom_toTopOf="@+id/tvHabitCount"
+            app:layout_constraintEnd_toStartOf="@id/tvHabitType"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            style="@style/habitItemTextViewStyle"
             android:id="@+id/tvHabitType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Спина качат"
-            app:layout_constraintTop_toBottomOf="@+id/tvHabitPriority"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            app:layout_constraintStart_toEndOf="@+id/tvHabitTypeTitle"
+            app:layout_constraintTop_toTopOf="@id/tvHabitTypeTitle"
+            app:layout_constraintBottom_toBottomOf="@id/tvHabitTypeTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Нейтральная" />
+
+        <TextView
+            style="@style/habitItemTextViewStyle"
+            android:id="@+id/tvHabitCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvHabitRhythm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHabitTypeTitle"
+            tools:text="Отжумания" />
+
+        <TextView
+            style="@style/habitItemTextViewStyle"
+            android:id="@+id/tvHabitRhythm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Спина качат" />
-
+            app:layout_constraintTop_toBottomOf="@+id/tvHabitCount"
+            tools:text="Отжумания" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
