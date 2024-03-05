@@ -9,8 +9,8 @@ data class Habit(
     val id: Int,
     var habitName: String?,
     var habitDescription: String?,
-    var habitPriority: String?,
-    var habitType: String?,
+    var habitPriority: HabitPriority,
+    var habitType: HabitType,
     var habitCount: String?,
     var habitRhythm: String?,
 ) : Parcelable {
@@ -21,8 +21,8 @@ data class Habit(
                 id = this.DEFAULT_ID,
                 habitName = "",
                 habitDescription = "",
-                habitPriority = "Нейтрально",
-                habitType = "Нейтральная",
+                habitPriority = HabitPriority.NEUTRAL,
+                habitType = HabitType.NEUTRAL,
                 habitCount = "",
                 habitRhythm = ""
             )
