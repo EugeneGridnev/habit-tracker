@@ -1,17 +1,13 @@
 <resources>
     <string name="app_name">Habit tracker</string>
-    <string name="habit_name">Название привычки</string>
-    <string name="habit_description">Описание привычки</string>
+    <string name="habit_name">Название привычки:</string>
+    <string name="habit_description">Описание привычки:</string>
     <string name="habit_rhythm">Частота выполнения:</string>
     <string name="habit_count">Количество выполнений:</string>
-    <string name="habit_name_edit_hint">Введите название привычки…</string>
-    <string name="habit_description_edit_hint">Введите описание привычки…</string>
     <string name="habit_priority">Приоритет привычки:</string>
     <string name="radio_good">Хорошая</string>
     <string name="radio_bad">Плохая</string>
     <string name="habit_type">Тип привычки:</string>
-    <string name="habit_count_edit_hint">Задайте количество повторений…</string>
-    <string name="habit_rhythm_edit_hint">Задайте частоту повторений…</string>
     <string name="add_habit_fab">Добавить привычку</string>
     <string name="save_habit">Сохранить привычку</string>
     <string name="radio_neutral">Нейтральная</string>
