@@ -47,6 +47,7 @@ class HabitActivity : AppCompatActivity() {
         }
     }
 
+    //TODO: обрабатывать от состояния
     private fun setUpUI() {
         setUpHabitPriority()
         if (habit.id == Habit.DEFAULT_ID) {

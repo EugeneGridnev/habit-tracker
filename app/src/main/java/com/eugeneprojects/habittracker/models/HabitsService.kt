@@ -1,6 +1,7 @@
 package com.eugeneprojects.habittracker.models
 
 typealias HabitsListener = (habits: List<Habit>) -> Unit
+
 class HabitsService {
     private var habits = mutableListOf<Habit>()
 
@@ -10,26 +11,41 @@ class HabitsService {
         return habits
     }
 
-    fun addHabit(id: Int,
-                 habitName: String?,
-                 habitDescription: String?,
-                 habitPriority: HabitPriority,
-                 habitType: HabitType,
-                 habitCount: String?,
-                 habitRhythm: String?) {
+    fun addHabit(
+        id: Int,
+        habitName: String?,
+        habitDescription: String?,
+        habitPriority: HabitPriority,
+        habitType: HabitType,
+        habitCount: String?,
+        habitRhythm: String?
+    ) {
 
-        habits.add(Habit(id,habitName, habitDescription, habitPriority, habitType, habitCount, habitRhythm))
+        habits.add(
+            Habit(
+                id,
+                habitName,
+                habitDescription,
+                habitPriority,
+                habitType,
+                habitCount,
+                habitRhythm
+            )
+        )
         notifyChanges()
 
     }
 
-    fun updateHabit(id: Int,
-                    habitName: String?,
-                    habitDescription: String?,
-                    habitPriority: HabitPriority,
-                    habitType: HabitType,
-                    habitCount: String?,
-                    habitRhythm: String?) {
+    //TODO: мапперы\фабрики и кодстайл
+    fun updateHabit(
+        id: Int,
+        habitName: String?,
+        habitDescription: String?,
+        habitPriority: HabitPriority,
+        habitType: HabitType,
+        habitCount: String?,
+        habitRhythm: String?
+    ) {
         habits[id].habitName = habitName
         habits[id].habitDescription = habitDescription
         habits[id].habitPriority = habitPriority

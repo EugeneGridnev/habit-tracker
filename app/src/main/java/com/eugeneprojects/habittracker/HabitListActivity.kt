@@ -34,6 +34,7 @@ class HabitListActivity : AppCompatActivity() {
     }
 
     private fun setUpRecyclerView() {
+        //TODO: юзать лямбды
         habitsAdapter = HabitsAdapter(object : HabitActionListener {
             override fun onHabitClick(habit: Habit) {
                 val intent = Intent(this@HabitListActivity, HabitActivity::class.java)
@@ -44,6 +45,7 @@ class HabitListActivity : AppCompatActivity() {
         })
         binding.rvHabitsList.apply {
             adapter = habitsAdapter
+            //TODO: можно пихать в лэйат, если не кастомный
             layoutManager = LinearLayoutManager(this@HabitListActivity)
         }
         habitsService.addListener (habitsListener)
@@ -53,7 +55,7 @@ class HabitListActivity : AppCompatActivity() {
         val intent = Intent(this, HabitActivity::class.java)
         startActivity(intent)
     }
-
+    //TODO: параметры выше
     private val habitsListener: HabitsListener = {
         habitsAdapter.habits = it
     }
