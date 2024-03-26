@@ -1,9 +1,10 @@
-package com.eugeneprojects.habittracker
+package com.eugeneprojects.habittracker.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.eugeneprojects.habittracker.App
 import com.eugeneprojects.habittracker.adapters.HabitActionListener
 import com.eugeneprojects.habittracker.adapters.HabitsAdapter
 import com.eugeneprojects.habittracker.databinding.ActivityHabitListBinding

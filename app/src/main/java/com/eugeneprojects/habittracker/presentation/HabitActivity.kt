@@ -1,4 +1,4 @@
-package com.eugeneprojects.habittracker
+package com.eugeneprojects.habittracker.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
-import com.eugeneprojects.habittracker.HabitListActivity.Companion.HABIT_KEY
+import com.eugeneprojects.habittracker.App
+import com.eugeneprojects.habittracker.presentation.HabitListActivity.Companion.HABIT_KEY
 import com.eugeneprojects.habittracker.databinding.ActivityHabitBinding
 import com.eugeneprojects.habittracker.models.Habit
 import com.eugeneprojects.habittracker.models.HabitPriority
