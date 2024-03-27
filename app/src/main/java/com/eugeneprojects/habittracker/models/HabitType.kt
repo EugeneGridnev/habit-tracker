@@ -1,8 +1,10 @@
 package com.eugeneprojects.habittracker.models
 
-//TODO: передавать айдишник, чтобы выцепдять из ресурсов
-enum class HabitType(val string: String) {
-    NEUTRAL("Нейтральная"),
-    GOOD("Хорошая"),
-    BAD("Плохая")
+import androidx.annotation.StringRes
+import com.eugeneprojects.habittracker.R
+
+enum class HabitType(@StringRes val stringId: Int) {
+    NEUTRAL(R.string.radio_neutral),
+    GOOD(R.string.radio_good),
+    BAD(R.string.radio_bad)
 }

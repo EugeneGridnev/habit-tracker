@@ -1,9 +1,10 @@
 package com.eugeneprojects.habittracker.models
 
-enum class HabitPriority(val string: String) {
-    NEUTRAL("Нейтральная"),
-    IMPORTANT("Важная"),
-    UNIMPORTANT("Неважная");
+import androidx.annotation.StringRes
+import com.eugeneprojects.habittracker.R
 
-    override fun toString() = string
+enum class HabitPriority(@StringRes val stringId: Int) {
+    NEUTRAL(R.string.habit_type_neutral),
+    IMPORTANT(R.string.habit_type_important),
+    UNIMPORTANT(R.string.habit_type_unimportant);
 }

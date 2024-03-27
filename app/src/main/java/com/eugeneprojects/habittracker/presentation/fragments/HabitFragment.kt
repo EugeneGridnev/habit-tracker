@@ -1,6 +1,5 @@
 package com.eugeneprojects.habittracker.presentation.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,20 +10,18 @@ import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import androidx.navigation.fragment.findNavController
 import com.eugeneprojects.habittracker.App
-import com.eugeneprojects.habittracker.R
 import com.eugeneprojects.habittracker.databinding.FragmentHabitBinding
 import com.eugeneprojects.habittracker.models.Habit
 import com.eugeneprojects.habittracker.models.HabitPriority
 import com.eugeneprojects.habittracker.models.HabitType
 import com.eugeneprojects.habittracker.models.HabitsService
-import com.eugeneprojects.habittracker.presentation.HabitListActivity
 import java.lang.Exception
 
 class HabitFragment : Fragment() {
 
     private var binding: FragmentHabitBinding? = null
     private lateinit var habit: Habit
-    private lateinit var spinnerArrayAdapter: ArrayAdapter<HabitPriority>
+    private lateinit var spinnerArrayAdapter: ArrayAdapter<HabitPriorityHolder>
 
     private val habitsService: HabitsService
         get() = (requireContext().applicationContext as App).habitsService
@@ -34,7 +31,7 @@ class HabitFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHabitBinding.inflate(inflater)
-        //TODO вопросики
+
         habit = arguments?.getParcelable(ARGS_HABIT)?: Habit.DEFAULT
 
         return binding!!.root
@@ -52,7 +49,11 @@ class HabitFragment : Fragment() {
     }
 
     private fun setUpHabitPriority() {
-        spinnerArrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, HabitPriority.entries).also {
+        val priorityItems = HabitPriority.entries.map {
+            HabitPriorityHolder(it, requireContext().getText(it.stringId).toString())
+        }.toTypedArray()
+
+        spinnerArrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, priorityItems).also {
                 adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding?.spinHabitPriority?.adapter = adapter
         }
@@ -87,7 +88,7 @@ class HabitFragment : Fragment() {
             HabitType.GOOD -> binding?.radioGood?.isChecked = true
             HabitType.BAD -> binding?.radioBad?.isChecked = true
         }
-        binding?.spinHabitPriority?.setSelection(spinnerArrayAdapter.getPosition(habit.habitPriority))
+        binding?.spinHabitPriority?.setSelection(spinnerArrayAdapter.getPosition(HabitPriorityHolder(habit.habitPriority)))
         binding?.edHabitCount?.setText(habit.habitCount)
         binding?.edHabitRhythm?.setText(habit.habitRhythm)
     }
@@ -116,7 +117,7 @@ class HabitFragment : Fragment() {
             id,
             binding?.edHabitName?.text.toString(),
             binding?.edHabitDescription?.text.toString(),
-            spinnerArrayAdapter.getItem(binding?.spinHabitPriority?.selectedItemId!!.toInt())!!,
+            spinnerArrayAdapter.getItem(binding?.spinHabitPriority?.selectedItemId!!.toInt())!!.priority,
             when (binding?.rgHabitType?.findViewById<RadioButton>(binding?.rgHabitType!!.checkedRadioButtonId)) {
                 binding?.radioNeutral -> HabitType.NEUTRAL
                 binding?.radioGood -> HabitType.GOOD
@@ -134,7 +135,7 @@ class HabitFragment : Fragment() {
             id,
             binding?.edHabitName?.text.toString(),
             binding?.edHabitDescription?.text.toString(),
-            spinnerArrayAdapter.getItem(binding?.spinHabitPriority?.selectedItemId!!.toInt())!!,
+            spinnerArrayAdapter.getItem(binding?.spinHabitPriority?.selectedItemId!!.toInt())!!.priority,
             when (binding?.rgHabitType?.findViewById<RadioButton>(binding?.rgHabitType!!.checkedRadioButtonId)) {
                 binding?.radioNeutral -> HabitType.NEUTRAL
                 binding?.radioGood -> HabitType.GOOD
@@ -144,6 +145,21 @@ class HabitFragment : Fragment() {
             binding?.edHabitCount?.text.toString(),
             binding?.edHabitRhythm?.text.toString()
         )
+    }
+
+    private class HabitPriorityHolder(val priority: HabitPriority, val name: String = "") {
+        override fun toString() = name
+
+        override fun equals(other: Any?): Boolean {
+            if (other is HabitPriorityHolder) {
+                return priority == other.priority
+            }
+            return super.equals(other)
+        }
+
+        override fun hashCode(): Int {
+            return priority.hashCode()
+        }
     }
 
     companion object {

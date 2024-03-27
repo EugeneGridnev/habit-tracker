@@ -7,10 +7,13 @@
     <string name="habit_priority">Приоритет привычки:</string>
     <string name="radio_good">Хорошая</string>
     <string name="radio_bad">Плохая</string>
+    <string name="radio_neutral">Нейтральная</string>
     <string name="habit_type">Тип привычки:</string>
     <string name="add_habit_fab">Добавить привычку</string>
+    <string name="habit_type_important">Важная</string>
+    <string name="habit_type_unimportant">Неважная</string>
+    <string name="habit_type_neutral">Нейтральная</string>
     <string name="save_habit">Сохранить привычку</string>
-    <string name="radio_neutral">Нейтральная</string>
     <string name="habit_name_helper">Обязательное поле</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
