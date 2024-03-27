@@ -10,7 +10,6 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.eugeneprojects.habittracker.App
 import com.eugeneprojects.habittracker.R
-import com.eugeneprojects.habittracker.adapters.HabitActionListener
 import com.eugeneprojects.habittracker.adapters.HabitsAdapter
 import com.eugeneprojects.habittracker.databinding.FragmentHabitsListBinding
 import com.eugeneprojects.habittracker.models.Habit
@@ -52,16 +51,14 @@ class HabitsListFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        //TODO: юзать лямбды
-        habitsAdapter = HabitsAdapter(object : HabitActionListener {
-            override fun onHabitClick(habit: Habit) {
-                findNavController().navigate(
-                    R.id.action_habitsListFragment_to_habitFragment,
-                    bundleOf(HabitFragment.ARGS_HABIT to habit)
-                )
-            }
 
-        })
+        habitsAdapter = HabitsAdapter {
+
+            findNavController().navigate(
+                R.id.action_habitsListFragment_to_habitFragment,
+                bundleOf(HabitFragment.ARGS_HABIT to it)
+            )
+        }
         binding?.rvHabitsList?.apply {
             adapter = habitsAdapter
         }

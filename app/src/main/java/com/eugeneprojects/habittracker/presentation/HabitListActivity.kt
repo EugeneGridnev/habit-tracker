@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eugeneprojects.habittracker.App
 import com.eugeneprojects.habittracker.R
-import com.eugeneprojects.habittracker.adapters.HabitActionListener
 import com.eugeneprojects.habittracker.adapters.HabitsAdapter
 import com.eugeneprojects.habittracker.databinding.ActivityHabitListBinding
 import com.eugeneprojects.habittracker.models.Habit

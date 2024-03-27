@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eugeneprojects.habittracker.databinding.ItemHabitLayoutBinding
 import com.eugeneprojects.habittracker.models.Habit
 
-class HabitsAdapter(private val actionListener: HabitActionListener) : RecyclerView.Adapter<HabitsAdapter.HabitsViewHolder>(), View.OnClickListener
+class HabitsAdapter(private val actionListener: (Habit) -> Unit) : RecyclerView.Adapter<HabitsAdapter.HabitsViewHolder>(), View.OnClickListener
 {
 
     var habits: List<Habit> = emptyList()
@@ -46,6 +46,6 @@ class HabitsAdapter(private val actionListener: HabitActionListener) : RecyclerV
 
     override fun onClick(v: View) {
         val habit = v.tag as Habit
-        actionListener.onHabitClick(habit)
+        actionListener(habit)
     }
 }
