@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
+import androidx.navigation.fragment.findNavController
 import com.eugeneprojects.habittracker.App
 import com.eugeneprojects.habittracker.R
 import com.eugeneprojects.habittracker.databinding.FragmentHabitBinding
@@ -22,16 +23,20 @@ import java.lang.Exception
 class HabitFragment : Fragment() {
 
     private var binding: FragmentHabitBinding? = null
+    private lateinit var habit: Habit
     private lateinit var spinnerArrayAdapter: ArrayAdapter<HabitPriority>
 
     private val habitsService: HabitsService
-        get() = (requireContext() as App).habitsService
+        get() = (requireContext().applicationContext as App).habitsService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHabitBinding.inflate(inflater)
+        //TODO вопросики
+        habit = arguments?.getParcelable(ARGS_HABIT)?: Habit.DEFAULT
+
         return binding!!.root
     }
 
@@ -96,17 +101,13 @@ class HabitFragment : Fragment() {
     }
 
     private fun onSaveHabitPressed() {
-        val intent = Intent(this, HabitListActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        startActivity(intent)
         saveHabit()
+        findNavController().popBackStack()
     }
 
     private fun onUpdateHabitPressed() {
-        val intent = Intent(this, HabitListActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        startActivity(intent)
         updateHabit()
+        findNavController().popBackStack()
     }
 
     private fun updateHabit() {
@@ -143,6 +144,10 @@ class HabitFragment : Fragment() {
             binding?.edHabitCount?.text.toString(),
             binding?.edHabitRhythm?.text.toString()
         )
+    }
+
+    companion object {
+        const val ARGS_HABIT = "habit"
     }
 
 }

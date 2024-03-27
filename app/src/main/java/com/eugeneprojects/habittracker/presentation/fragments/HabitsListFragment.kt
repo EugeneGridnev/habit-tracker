@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import com.eugeneprojects.habittracker.App
 import com.eugeneprojects.habittracker.R
 import com.eugeneprojects.habittracker.adapters.HabitActionListener
@@ -15,8 +16,6 @@ import com.eugeneprojects.habittracker.databinding.FragmentHabitsListBinding
 import com.eugeneprojects.habittracker.models.Habit
 import com.eugeneprojects.habittracker.models.HabitsListener
 import com.eugeneprojects.habittracker.models.HabitsService
-import com.eugeneprojects.habittracker.presentation.HabitActivity
-import com.eugeneprojects.habittracker.presentation.HabitListActivity
 
 class HabitsListFragment : Fragment() {
 
@@ -28,7 +27,7 @@ class HabitsListFragment : Fragment() {
     }
 
     private val habitsService: HabitsService
-        get() = (requireContext() as App).habitsService
+        get() = (requireContext().applicationContext as App).habitsService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +39,10 @@ class HabitsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding?.fabAddHabit?.setOnClickListener { onAddHabitFABPressed() }
+
+        setUpRecyclerView()
     }
 
     override fun onDestroyView() {
@@ -52,9 +55,10 @@ class HabitsListFragment : Fragment() {
         //TODO: юзать лямбды
         habitsAdapter = HabitsAdapter(object : HabitActionListener {
             override fun onHabitClick(habit: Habit) {
-                val intent = Intent(this@HabitListActivity, HabitActivity::class.java)
-                intent.putExtra(HabitListActivity.HABIT_KEY, habit)
-                startActivity(intent)
+                findNavController().navigate(
+                    R.id.action_habitsListFragment_to_habitFragment,
+                    bundleOf(HabitFragment.ARGS_HABIT to habit)
+                )
             }
 
         })
@@ -65,7 +69,6 @@ class HabitsListFragment : Fragment() {
     }
 
     private fun onAddHabitFABPressed() {
-        val intent = Intent(this, HabitActivity::class.java)
-        startActivity(intent)
+        findNavController().navigate(R.id.action_habitsListFragment_to_habitFragment)
     }
 }
