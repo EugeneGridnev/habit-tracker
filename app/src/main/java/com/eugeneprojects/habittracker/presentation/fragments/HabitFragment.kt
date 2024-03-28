@@ -1,13 +1,13 @@
 package com.eugeneprojects.habittracker.presentation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.eugeneprojects.habittracker.App
 import com.eugeneprojects.habittracker.databinding.FragmentHabitBinding
@@ -15,7 +15,6 @@ import com.eugeneprojects.habittracker.models.Habit
 import com.eugeneprojects.habittracker.models.HabitPriority
 import com.eugeneprojects.habittracker.models.HabitType
 import com.eugeneprojects.habittracker.models.HabitsService
-import java.lang.Exception
 
 class HabitFragment : Fragment() {
 
