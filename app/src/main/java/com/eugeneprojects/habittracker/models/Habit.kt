@@ -22,7 +22,7 @@ data class Habit(
                 habitName = "",
                 habitDescription = "",
                 habitPriority = HabitPriority.NEUTRAL,
-                habitType = HabitType.NEUTRAL,
+                habitType = HabitType.GOOD,
                 habitCount = "",
                 habitRhythm = ""
             )

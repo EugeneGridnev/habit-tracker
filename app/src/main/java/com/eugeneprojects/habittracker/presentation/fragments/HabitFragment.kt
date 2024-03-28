@@ -84,7 +84,6 @@ class HabitFragment : Fragment() {
         binding?.edHabitName?.setText(habit.habitName)
         binding?.edHabitDescription?.setText(habit.habitDescription)
         when (habit.habitType) {
-            HabitType.NEUTRAL -> binding?.radioNeutral?.isChecked = true
             HabitType.GOOD -> binding?.radioGood?.isChecked = true
             HabitType.BAD -> binding?.radioBad?.isChecked = true
         }
@@ -119,7 +118,6 @@ class HabitFragment : Fragment() {
             binding?.edHabitDescription?.text.toString(),
             spinnerArrayAdapter.getItem(binding?.spinHabitPriority?.selectedItemId!!.toInt())!!.priority,
             when (binding?.rgHabitType?.findViewById<RadioButton>(binding?.rgHabitType!!.checkedRadioButtonId)) {
-                binding?.radioNeutral -> HabitType.NEUTRAL
                 binding?.radioGood -> HabitType.GOOD
                 binding?.radioBad -> HabitType.BAD
                 else -> throw Exception()
@@ -137,7 +135,6 @@ class HabitFragment : Fragment() {
             binding?.edHabitDescription?.text.toString(),
             spinnerArrayAdapter.getItem(binding?.spinHabitPriority?.selectedItemId!!.toInt())!!.priority,
             when (binding?.rgHabitType?.findViewById<RadioButton>(binding?.rgHabitType!!.checkedRadioButtonId)) {
-                binding?.radioNeutral -> HabitType.NEUTRAL
                 binding?.radioGood -> HabitType.GOOD
                 binding?.radioBad -> HabitType.BAD
                 else -> throw Exception()
