@@ -14,6 +14,7 @@ import com.eugeneprojects.habittracker.adapters.ViewPagerAdapter
 import com.eugeneprojects.habittracker.databinding.FragmentHabitsHomeBinding
 import com.eugeneprojects.habittracker.models.HabitsListener
 import com.eugeneprojects.habittracker.models.HabitsService
+import com.google.android.material.tabs.TabLayoutMediator
 
 class HabitsHomeFragment : Fragment() {
 
@@ -49,6 +50,11 @@ class HabitsHomeFragment : Fragment() {
             BadHabitsListFragment()
         )
 
+        val tabsNamesList = arrayListOf(
+            requireContext().getText(R.string.tab_good_text),
+            requireContext().getText(R.string.tab_bad_text)
+        )
+
         habitsListsViewPagerAdapter = ViewPagerAdapter(
             fragmentsList,
             childFragmentManager,
@@ -56,6 +62,10 @@ class HabitsHomeFragment : Fragment() {
         )
 
         binding?.vpHabitsLists?.adapter = habitsListsViewPagerAdapter
+
+        TabLayoutMediator(binding!!.tlHabitsLists, binding!!.vpHabitsLists) { tab, position ->
+            tab.text = tabsNamesList[position]
+        }.attach()
 
     }
 
