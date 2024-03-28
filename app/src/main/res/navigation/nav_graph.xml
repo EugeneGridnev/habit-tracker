@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/habitsListFragment">
+    app:startDestination="@id/habitsHomeFragment">
 
     <fragment
-        android:id="@+id/habitsListFragment"
-        android:name="com.eugeneprojects.habittracker.presentation.fragments.HabitsListFragment"
+        android:id="@+id/habitsHomeFragment"
+        android:name="com.eugeneprojects.habittracker.presentation.fragments.HabitsHomeFragment"
         android:label="HabitsListFragment" >
         <action
             android:id="@+id/action_habitsListFragment_to_habitFragment"

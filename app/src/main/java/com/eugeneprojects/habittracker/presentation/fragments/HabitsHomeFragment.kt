@@ -1,6 +1,5 @@
 package com.eugeneprojects.habittracker.presentation.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,28 +10,22 @@ import androidx.navigation.fragment.findNavController
 import com.eugeneprojects.habittracker.App
 import com.eugeneprojects.habittracker.R
 import com.eugeneprojects.habittracker.adapters.HabitsAdapter
-import com.eugeneprojects.habittracker.databinding.FragmentHabitsListBinding
-import com.eugeneprojects.habittracker.models.Habit
+import com.eugeneprojects.habittracker.adapters.ViewPagerAdapter
+import com.eugeneprojects.habittracker.databinding.FragmentHabitsHomeBinding
 import com.eugeneprojects.habittracker.models.HabitsListener
 import com.eugeneprojects.habittracker.models.HabitsService
 
-class HabitsListFragment : Fragment() {
+class HabitsHomeFragment : Fragment() {
 
-    private var binding: FragmentHabitsListBinding? = null
-    private lateinit var habitsAdapter: HabitsAdapter
+    private var binding: FragmentHabitsHomeBinding? = null
+    private lateinit var habitsListsViewPagerAdapter: ViewPagerAdapter
 
-    private val habitsListener: HabitsListener = {
-        habitsAdapter.habits = it
-    }
-
-    private val habitsService: HabitsService
-        get() = (requireContext().applicationContext as App).habitsService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHabitsListBinding.inflate(inflater)
+        binding = FragmentHabitsHomeBinding.inflate(inflater)
         return binding!!.root
     }
 
@@ -41,28 +34,29 @@ class HabitsListFragment : Fragment() {
 
         binding?.fabAddHabit?.setOnClickListener { onAddHabitFABPressed() }
 
-        setUpRecyclerView()
+        setUpViewPager()
     }
 
     override fun onDestroyView() {
         binding = null
-        habitsService.removeListener(habitsListener)
         super.onDestroyView()
     }
 
-    private fun setUpRecyclerView() {
+    private fun setUpViewPager() {
 
-        habitsAdapter = HabitsAdapter {
+        val fragmentsList = arrayListOf(
+            GoodHabitsListFragment(),
+            BadHabitsListFragment()
+        )
 
-            findNavController().navigate(
-                R.id.action_habitsListFragment_to_habitFragment,
-                bundleOf(HabitFragment.ARGS_HABIT to it)
-            )
-        }
-        binding?.rvHabitsList?.apply {
-            adapter = habitsAdapter
-        }
-        habitsService.addListener (habitsListener)
+        habitsListsViewPagerAdapter = ViewPagerAdapter(
+            fragmentsList,
+            childFragmentManager,
+            lifecycle
+        )
+
+        binding?.vpHabitsLists?.adapter = habitsListsViewPagerAdapter
+
     }
 
     private fun onAddHabitFABPressed() {

@@ -6,17 +6,16 @@
     android:background="?android:attr/selectableItemBackground"
     tools:context=".presentation.HabitListActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHabitsList"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpHabitsLists"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+    </androidx.viewpager2.widget.ViewPager2>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddHabit"
