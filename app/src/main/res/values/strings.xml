@@ -15,8 +15,7 @@
     <string name="habit_type_neutral">Нейтральная</string>
     <string name="save_habit">Сохранить привычку</string>
     <string name="habit_name_helper">Обязательное поле</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_item_info">Информация</string>
     <string name="menu_item_main">Главный экран</string>
+    <string name="app_info">Приложение для работы с привычками!(позднее данный фрагмент будет переработан)</string>
 </resources>
