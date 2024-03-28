@@ -1,168 +1,180 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
-        android:id="@+id/tiHabitName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:hint="@string/habit_name"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
-        app:helperText="@string/habit_name_helper"
-        app:helperTextTextColor="@color/red"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintBottom_toTopOf="@id/tiHabitDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edHabitName"
-            android:maxLength="20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+            android:id="@+id/tiHabitName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:hint="@string/habit_name"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toTopOf="@id/tiHabitDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edHabitName"
+                android:maxLines="1"
+                android:maxLength="20"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
-        android:id="@+id/tiHabitDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:hint="@string/habit_description"
-        app:counterEnabled="true"
-        app:counterMaxLength="200"
-        app:layout_constraintTop_toBottomOf="@id/tiHabitName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvHabitPriority">
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+            android:id="@+id/tiHabitDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:hint="@string/habit_description"
+            app:counterEnabled="true"
+            app:counterMaxLength="200"
+            app:layout_constraintTop_toBottomOf="@id/tiHabitName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvHabitPriority">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edHabitDescription"
-            android:maxLength="200"
-            android:maxLines="4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edHabitDescription"
+                android:maxLength="200"
+                android:inputType="text"
+                android:maxLines="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        style="@style/habitTextViewStyle"
-        android:id="@+id/tvHabitPriority"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/habit_priority"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintEnd_toStartOf="@+id/spinHabitPriority"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tiHabitDescription"
-        app:layout_constraintBottom_toTopOf="@id/tvHabitType"/>
-
-    <Spinner
-        android:id="@+id/spinHabitPriority"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/tvHabitPriority"
-        app:layout_constraintStart_toEndOf="@id/tvHabitPriority"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvHabitPriority" />
-
-    <TextView
-        style="@style/habitTextViewStyle"
-        android:id="@+id/tvHabitType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/habit_type"
-        app:layout_constraintTop_toBottomOf="@+id/tvHabitPriority"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/rgHabitType"/>
-
-    <RadioGroup
-        android:id="@+id/rgHabitType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="3dp"
-        android:checkedButton="@id/radioGood"
-        app:layout_constraintTop_toBottomOf="@+id/tvHabitType"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tiHabitCount">
-
-        <RadioButton
-            style="@style/radioButtonStyle"
-            android:id="@+id/radioGood"
+        <TextView
+            style="@style/habitTextViewStyle"
+            android:id="@+id/tvHabitPriority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/radio_good" />
+            android:text="@string/habit_priority"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintEnd_toStartOf="@+id/spinHabitPriority"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tiHabitDescription"
+            app:layout_constraintBottom_toTopOf="@id/tvHabitType"/>
 
-        <RadioButton
-            style="@style/radioButtonStyle"
-            android:id="@+id/radioBad"
+        <Spinner
+            android:id="@+id/spinHabitPriority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/radio_bad" />
-    </RadioGroup>
+            app:layout_constraintBottom_toBottomOf="@id/tvHabitPriority"
+            app:layout_constraintStart_toEndOf="@id/tvHabitPriority"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvHabitPriority" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
-        android:id="@+id/tiHabitCount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:hint="@string/habit_count"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
-        app:layout_constraintTop_toBottomOf="@+id/rgHabitType"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tiHabitRhythm">
+        <TextView
+            style="@style/habitTextViewStyle"
+            android:id="@+id/tvHabitType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/habit_type"
+            app:layout_constraintTop_toBottomOf="@+id/tvHabitPriority"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/rgHabitType"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edHabitCount"
-            android:maxLength="20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        <RadioGroup
+            android:id="@+id/rgHabitType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="3dp"
+            android:checkedButton="@id/radioGood"
+            app:layout_constraintTop_toBottomOf="@+id/tvHabitType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tiHabitCount">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
-        android:id="@+id/tiHabitRhythm"
-        android:hint="@string/habit_rhythm"
-        android:layout_margin="3dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
-        app:layout_constraintTop_toBottomOf="@+id/tiHabitCount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnHabitSave">
+            <RadioButton
+                style="@style/radioButtonStyle"
+                android:id="@+id/radioGood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_good" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edHabitRhythm"
-            android:maxLength="20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <RadioButton
+                style="@style/radioButtonStyle"
+                android:id="@+id/radioBad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_bad" />
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+            android:id="@+id/tiHabitCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:hint="@string/habit_count"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:layout_constraintTop_toBottomOf="@+id/rgHabitType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tiHabitRhythm">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edHabitCount"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+            android:id="@+id/tiHabitRhythm"
+            android:hint="@string/habit_rhythm"
+            android:layout_margin="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:layout_constraintTop_toBottomOf="@+id/tiHabitCount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnHabitSave">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edHabitRhythm"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnHabitSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:text="@string/save_habit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tiHabitRhythm" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHabitSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:text="@string/save_habit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tiHabitRhythm" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -36,7 +36,7 @@ class HabitsService {
 
     }
 
-    //TODO: мапперы\фабрики и кодстайл
+    //TODO: мапперы\фабрики
     fun updateHabit(
         id: Int,
         habitName: String?,

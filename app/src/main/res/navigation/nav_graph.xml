@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/habitsHomeFragment"
         android:name="com.eugeneprojects.habittracker.presentation.fragments.HabitsHomeFragment"
-        android:label="HabitsListFragment" >
+        android:label="Home" >
         <action
             android:id="@+id/action_habitsListFragment_to_habitFragment"
             app:destination="@id/habitFragment" />
@@ -19,10 +19,10 @@
     <fragment
         android:id="@+id/habitFragment"
         android:name="com.eugeneprojects.habittracker.presentation.fragments.HabitFragment"
-        android:label="HabitFragment" />
+        android:label="Habit" />
     <fragment
         android:id="@+id/appInfoFragment"
         android:name="com.eugeneprojects.habittracker.presentation.fragments.AppInfoFragment"
-        android:label="fragment_app_info"
+        android:label="About habit app"
         tools:layout="@layout/fragment_app_info" />
 </navigation>

@@ -13,10 +13,10 @@
     <string name="habit_type_unimportant">Неважная</string>
     <string name="habit_type_neutral">Нейтральная</string>
     <string name="save_habit">Сохранить привычку</string>
-    <string name="habit_name_helper">Обязательное поле</string>
     <string name="menu_item_info">Информация</string>
     <string name="menu_item_main">Главный экран</string>
     <string name="app_info">Приложение для работы с привычками!(позднее данный фрагмент будет переработан)</string>
     <string name="tab_good_text">Хорошие привычки</string>
     <string name="tab_bad_text">Плохие привычки</string>
+    <string name="empty_habit_name_error">Поле не может быть пустым</string>
 </resources>

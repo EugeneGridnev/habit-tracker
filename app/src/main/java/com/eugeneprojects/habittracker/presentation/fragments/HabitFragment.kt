@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.eugeneprojects.habittracker.App
+import com.eugeneprojects.habittracker.R
 import com.eugeneprojects.habittracker.databinding.FragmentHabitBinding
 import com.eugeneprojects.habittracker.models.Habit
 import com.eugeneprojects.habittracker.models.HabitPriority
@@ -36,8 +38,25 @@ class HabitFragment : Fragment() {
         return binding!!.root
     }
 
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        if (savedInstanceState == null) {
+            setUpHabitPriority()
+            if (habit.id != Habit.DEFAULT_ID) {
+                setUpUIParams()
+                setUpUpdateHabitButton()
+            } else {
+                binding?.btnHabitSave?.isEnabled = false
+                binding?.tiHabitName?.error =
+                    requireContext().getText(R.string.empty_habit_name_error)
+            }
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setCheckSiteNameListener()
 
         setUpUI()
     }
@@ -141,6 +160,20 @@ class HabitFragment : Fragment() {
             binding?.edHabitCount?.text.toString(),
             binding?.edHabitRhythm?.text.toString()
         )
+    }
+
+    private fun setCheckSiteNameListener() {
+
+        binding?.edHabitName?.addTextChangedListener { text ->
+            if (text?.isBlank() == false) {
+                binding?.btnHabitSave?.isEnabled = true
+                binding?.tiHabitName?.error = null
+            } else {
+                binding?.btnHabitSave?.isEnabled = false
+                binding?.tiHabitName?.error =
+                    requireContext().getText(R.string.empty_habit_name_error)
+            }
+        }
     }
 
     private class HabitPriorityHolder(val priority: HabitPriority, val name: String = "") {
